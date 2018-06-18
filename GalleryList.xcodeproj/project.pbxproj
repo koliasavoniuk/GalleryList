@@ -13,6 +13,15 @@
 		7661D0BD20D7FA4F003EB44F /* GalleryList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0BB20D7FA4F003EB44F /* GalleryList.xcdatamodeld */; };
 		7661D0BF20D7FA4F003EB44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7661D0BE20D7FA4F003EB44F /* Assets.xcassets */; };
 		7661D0C220D7FA4F003EB44F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7661D0C020D7FA4F003EB44F /* LaunchScreen.storyboard */; };
+		7661D0D020D7FD97003EB44F /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0CE20D7FD97003EB44F /* GalleryViewController.swift */; };
+		7661D0D120D7FD97003EB44F /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7661D0CF20D7FD97003EB44F /* GalleryViewController.xib */; };
+		7661D0D420D7FDA5003EB44F /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0D220D7FDA5003EB44F /* ListViewController.swift */; };
+		7661D0D520D7FDA5003EB44F /* ListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7661D0D320D7FDA5003EB44F /* ListViewController.xib */; };
+		7661D0D720D7FDFB003EB44F /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0D620D7FDFB003EB44F /* MainTabBarViewController.swift */; };
+		7661D0D920D7FE12003EB44F /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0D820D7FE12003EB44F /* GalleryView.swift */; };
+		7661D0DB20D7FE21003EB44F /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0DA20D7FE21003EB44F /* ListView.swift */; };
+		7661D0DF20D7FFD3003EB44F /* UITabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0DE20D7FFD3003EB44F /* UITabBarController+Extensions.swift */; };
+		7661D0E220D80033003EB44F /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0E120D80033003EB44F /* CommonConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,15 @@
 		7661D0BE20D7FA4F003EB44F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7661D0C120D7FA4F003EB44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7661D0C320D7FA4F003EB44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7661D0CE20D7FD97003EB44F /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		7661D0CF20D7FD97003EB44F /* GalleryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
+		7661D0D220D7FDA5003EB44F /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		7661D0D320D7FDA5003EB44F /* ListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListViewController.xib; sourceTree = "<group>"; };
+		7661D0D620D7FDFB003EB44F /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		7661D0D820D7FE12003EB44F /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		7661D0DA20D7FE21003EB44F /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		7661D0DE20D7FFD3003EB44F /* UITabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extensions.swift"; sourceTree = "<group>"; };
+		7661D0E120D80033003EB44F /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +74,7 @@
 		7661D0B320D7FA4F003EB44F /* GalleryList */ = {
 			isa = PBXGroup;
 			children = (
+				7661D0C920D7FB99003EB44F /* Source */,
 				7661D0B420D7FA4F003EB44F /* AppDelegate.swift */,
 				7661D0B620D7FA4F003EB44F /* ViewController.swift */,
 				7661D0B820D7FA4F003EB44F /* Main.storyboard */,
@@ -65,6 +84,78 @@
 				7661D0BB20D7FA4F003EB44F /* GalleryList.xcdatamodeld */,
 			);
 			path = GalleryList;
+			sourceTree = "<group>";
+		};
+		7661D0C920D7FB99003EB44F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				7661D0E020D80021003EB44F /* Constants */,
+				7661D0DC20D7FFAF003EB44F /* Libs */,
+				7661D0CA20D7FBA2003EB44F /* UI */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		7661D0CA20D7FBA2003EB44F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				7661D0CD20D7FD7E003EB44F /* GalleryViewController */,
+				7661D0CC20D7FD67003EB44F /* ListViewController */,
+				7661D0CB20D7FBAA003EB44F /* MainTabBarViewController */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		7661D0CB20D7FBAA003EB44F /* MainTabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7661D0D620D7FDFB003EB44F /* MainTabBarViewController.swift */,
+			);
+			path = MainTabBarViewController;
+			sourceTree = "<group>";
+		};
+		7661D0CC20D7FD67003EB44F /* ListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7661D0D220D7FDA5003EB44F /* ListViewController.swift */,
+				7661D0D320D7FDA5003EB44F /* ListViewController.xib */,
+				7661D0DA20D7FE21003EB44F /* ListView.swift */,
+			);
+			path = ListViewController;
+			sourceTree = "<group>";
+		};
+		7661D0CD20D7FD7E003EB44F /* GalleryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7661D0CE20D7FD97003EB44F /* GalleryViewController.swift */,
+				7661D0CF20D7FD97003EB44F /* GalleryViewController.xib */,
+				7661D0D820D7FE12003EB44F /* GalleryView.swift */,
+			);
+			path = GalleryViewController;
+			sourceTree = "<group>";
+		};
+		7661D0DC20D7FFAF003EB44F /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				7661D0DD20D7FFB6003EB44F /* Extensions */,
+			);
+			path = Libs;
+			sourceTree = "<group>";
+		};
+		7661D0DD20D7FFB6003EB44F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7661D0DE20D7FFD3003EB44F /* UITabBarController+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7661D0E020D80021003EB44F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				7661D0E120D80033003EB44F /* CommonConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +218,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7661D0C220D7FA4F003EB44F /* LaunchScreen.storyboard in Resources */,
+				7661D0D120D7FD97003EB44F /* GalleryViewController.xib in Resources */,
+				7661D0D520D7FDA5003EB44F /* ListViewController.xib in Resources */,
 				7661D0BF20D7FA4F003EB44F /* Assets.xcassets in Resources */,
 				7661D0BA20D7FA4F003EB44F /* Main.storyboard in Resources */,
 			);
@@ -139,8 +232,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7661D0DB20D7FE21003EB44F /* ListView.swift in Sources */,
+				7661D0D920D7FE12003EB44F /* GalleryView.swift in Sources */,
 				7661D0B720D7FA4F003EB44F /* ViewController.swift in Sources */,
+				7661D0D020D7FD97003EB44F /* GalleryViewController.swift in Sources */,
 				7661D0BD20D7FA4F003EB44F /* GalleryList.xcdatamodeld in Sources */,
+				7661D0D720D7FDFB003EB44F /* MainTabBarViewController.swift in Sources */,
+				7661D0E220D80033003EB44F /* CommonConstants.swift in Sources */,
+				7661D0DF20D7FFD3003EB44F /* UITabBarController+Extensions.swift in Sources */,
+				7661D0D420D7FDA5003EB44F /* ListViewController.swift in Sources */,
 				7661D0B520D7FA4F003EB44F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
