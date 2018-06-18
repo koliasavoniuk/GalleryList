@@ -1,5 +1,5 @@
 //
-//  GalleryView.swift
+//  GalleryCollectionViewCell.swift
 //  GalleryList
 //
 //  Created by Mykola Savoniuk on 6/18/18.
@@ -8,7 +8,6 @@
 
 import UIKit
 
-class GalleryView: UIView {
-    @IBOutlet var collectionView: UICollectionView!
+class GalleryCollectionViewCell: UICollectionViewCell {
     
 }

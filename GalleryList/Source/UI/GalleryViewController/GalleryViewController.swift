@@ -8,17 +8,33 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController {
+class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet var rootView: GalleryView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureView()
     }
 
+    // MARK: - UICollectionViewDataSource
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "String", for: indexPath)
+    }
+    
     // MARK: - Private
     
     private func configureView() {
         self.navigationItem.title = VCTitles.gallery.rawValue
     }
+    
+//    private func configureCollectionView() {
+//        self.rootView.collectionView.register
+//    }
 }
