@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class GalleryViewController: UIViewController/*, UICollectionViewDataSource, UICollectionViewDelegate*/ {
 
     @IBOutlet var rootView: GalleryView!
     
@@ -20,13 +20,13 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
 
     // MARK: - UICollectionViewDataSource
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "String", for: indexPath)
-    }
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 10
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        return collectionView.dequeueReusableCell(withReuseIdentifier: "String", for: indexPath)
+//    }
     
     // MARK: - Private
     
