@@ -15,6 +15,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         self.configureView()
+        self.configureNavigationItem()
     }
     
     // MARK: - UITableViewDataSource
@@ -31,5 +32,18 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func configureView() {
         self.navigationItem.title = VCTitles.list.rawValue
+    }
+    
+    private func configureNavigationItem() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddVC))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(makeEditing))
+    }
+    
+    @objc private func showAddVC() {
+        
+    }
+    
+    @objc private func makeEditing() {
+        
     }
 }
