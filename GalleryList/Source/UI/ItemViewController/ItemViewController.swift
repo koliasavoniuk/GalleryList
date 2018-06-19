@@ -10,6 +10,8 @@ import UIKit
 
 class ItemViewController: UIViewController {
 
+    @IBOutlet var rootView: ItemsView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
