@@ -23,9 +23,9 @@
 		7661D0DF20D7FFD3003EB44F /* UITabBarController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0DE20D7FFD3003EB44F /* UITabBarController+Extensions.swift */; };
 		7661D0E220D80033003EB44F /* CommonConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0E120D80033003EB44F /* CommonConstants.swift */; };
 		7661D0E520D80645003EB44F /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0E420D80645003EB44F /* GalleryCollectionViewCell.swift */; };
-		7661D0E820D8D749003EB44F /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0E720D8D749003EB44F /* Managers.swift */; };
-		7661D0EA20D8D753003EB44F /* Workers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0E920D8D753003EB44F /* Workers.swift */; };
-		7661D0EC20D8D7A7003EB44F /* Bookkeepers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0EB20D8D7A7003EB44F /* Bookkeepers.swift */; };
+		7661D0E820D8D749003EB44F /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0E720D8D749003EB44F /* Manager.swift */; };
+		7661D0EA20D8D753003EB44F /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0E920D8D753003EB44F /* Worker.swift */; };
+		7661D0EC20D8D7A7003EB44F /* Bookkeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0EB20D8D7A7003EB44F /* Bookkeeper.swift */; };
 		7661D0EE20D8D7BD003EB44F /* ParentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0ED20D8D7BD003EB44F /* ParentModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,9 +48,9 @@
 		7661D0DE20D7FFD3003EB44F /* UITabBarController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extensions.swift"; sourceTree = "<group>"; };
 		7661D0E120D80033003EB44F /* CommonConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonConstants.swift; sourceTree = "<group>"; };
 		7661D0E420D80645003EB44F /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
-		7661D0E720D8D749003EB44F /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
-		7661D0E920D8D753003EB44F /* Workers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workers.swift; sourceTree = "<group>"; };
-		7661D0EB20D8D7A7003EB44F /* Bookkeepers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookkeepers.swift; sourceTree = "<group>"; };
+		7661D0E720D8D749003EB44F /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		7661D0E920D8D753003EB44F /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
+		7661D0EB20D8D7A7003EB44F /* Bookkeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookkeeper.swift; sourceTree = "<group>"; };
 		7661D0ED20D8D7BD003EB44F /* ParentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,9 +181,9 @@
 		7661D0E620D8D710003EB44F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7661D0E720D8D749003EB44F /* Managers.swift */,
-				7661D0E920D8D753003EB44F /* Workers.swift */,
-				7661D0EB20D8D7A7003EB44F /* Bookkeepers.swift */,
+				7661D0E720D8D749003EB44F /* Manager.swift */,
+				7661D0E920D8D753003EB44F /* Worker.swift */,
+				7661D0EB20D8D7A7003EB44F /* Bookkeeper.swift */,
 				7661D0ED20D8D7BD003EB44F /* ParentModel.swift */,
 			);
 			path = Models;
@@ -266,18 +266,18 @@
 				7661D0DB20D7FE21003EB44F /* ListView.swift in Sources */,
 				7661D0EE20D8D7BD003EB44F /* ParentModel.swift in Sources */,
 				7661D0D920D7FE12003EB44F /* GalleryView.swift in Sources */,
-				7661D0EA20D8D753003EB44F /* Workers.swift in Sources */,
+				7661D0EA20D8D753003EB44F /* Worker.swift in Sources */,
 				7661D0B720D7FA4F003EB44F /* ViewController.swift in Sources */,
 				7661D0D020D7FD97003EB44F /* GalleryViewController.swift in Sources */,
 				7661D0BD20D7FA4F003EB44F /* GalleryList.xcdatamodeld in Sources */,
-				7661D0EC20D8D7A7003EB44F /* Bookkeepers.swift in Sources */,
+				7661D0EC20D8D7A7003EB44F /* Bookkeeper.swift in Sources */,
 				7661D0D720D7FDFB003EB44F /* MainTabBarViewController.swift in Sources */,
 				7661D0E220D80033003EB44F /* CommonConstants.swift in Sources */,
 				7661D0DF20D7FFD3003EB44F /* UITabBarController+Extensions.swift in Sources */,
 				7661D0D420D7FDA5003EB44F /* ListViewController.swift in Sources */,
 				7661D0B520D7FA4F003EB44F /* AppDelegate.swift in Sources */,
 				7661D0E520D80645003EB44F /* GalleryCollectionViewCell.swift in Sources */,
-				7661D0E820D8D749003EB44F /* Managers.swift in Sources */,
+				7661D0E820D8D749003EB44F /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

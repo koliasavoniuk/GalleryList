@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class ParentModel: NSObject {
+    let salary: Int
+    let name: String
+    
+    init(salary: Int, name: String) {
+        self.salary = salary
+        self.name = name
+    }
+}
