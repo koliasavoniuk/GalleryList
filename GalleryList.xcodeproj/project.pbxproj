@@ -30,6 +30,9 @@
 		7661D0EA20D8D753003EB44F /* Worker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0E920D8D753003EB44F /* Worker.swift */; };
 		7661D0EC20D8D7A7003EB44F /* Bookkeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0EB20D8D7A7003EB44F /* Bookkeeper.swift */; };
 		7661D0EE20D8D7BD003EB44F /* ParentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0ED20D8D7BD003EB44F /* ParentModel.swift */; };
+		76D31AD820D92D63001A0187 /* ManagerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D31AD720D92D63001A0187 /* ManagerView.xib */; };
+		76D31ADA20D92D70001A0187 /* WorkerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D31AD920D92D70001A0187 /* WorkerView.xib */; };
+		76D31ADD20D92DA8001A0187 /* BookkeeperView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 76D31ADC20D92DA8001A0187 /* BookkeeperView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		7661D0E920D8D753003EB44F /* Worker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worker.swift; sourceTree = "<group>"; };
 		7661D0EB20D8D7A7003EB44F /* Bookkeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookkeeper.swift; sourceTree = "<group>"; };
 		7661D0ED20D8D7BD003EB44F /* ParentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentModel.swift; sourceTree = "<group>"; };
+		76D31AD720D92D63001A0187 /* ManagerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManagerView.xib; sourceTree = "<group>"; };
+		76D31AD920D92D70001A0187 /* WorkerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkerView.xib; sourceTree = "<group>"; };
+		76D31ADC20D92DA8001A0187 /* BookkeeperView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookkeeperView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 		761BDB2320D8F8030074E9D8 /* ItemViewController */ = {
 			isa = PBXGroup;
 			children = (
+				76D31AD420D92CFD001A0187 /* Views */,
 				761BDB2420D8F8200074E9D8 /* ItemViewController.swift */,
 				761BDB2520D8F8200074E9D8 /* ItemViewController.xib */,
 			);
@@ -214,6 +221,16 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		76D31AD420D92CFD001A0187 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				76D31AD720D92D63001A0187 /* ManagerView.xib */,
+				76D31AD920D92D70001A0187 /* WorkerView.xib */,
+				76D31ADC20D92DA8001A0187 /* BookkeeperView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -277,7 +294,10 @@
 				761BDB2720D8F8200074E9D8 /* ItemViewController.xib in Resources */,
 				7661D0D120D7FD97003EB44F /* GalleryViewController.xib in Resources */,
 				7661D0D520D7FDA5003EB44F /* ListViewController.xib in Resources */,
+				76D31ADA20D92D70001A0187 /* WorkerView.xib in Resources */,
+				76D31ADD20D92DA8001A0187 /* BookkeeperView.xib in Resources */,
 				7661D0BF20D7FA4F003EB44F /* Assets.xcassets in Resources */,
+				76D31AD820D92D63001A0187 /* ManagerView.xib in Resources */,
 				7661D0BA20D7FA4F003EB44F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
