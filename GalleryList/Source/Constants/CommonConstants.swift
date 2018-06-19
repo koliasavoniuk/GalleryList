@@ -21,4 +21,9 @@ enum PictureName: String {
 enum VCTitles: String {
     case list = "List"
     case gallery = "Gallery"
+    case item = "Item"
+}
+
+enum BarButtonItems: String {
+    case back = "Back"
 }

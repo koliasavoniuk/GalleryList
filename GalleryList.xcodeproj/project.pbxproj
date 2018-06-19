@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		761BDB1D20D8EAE10074E9D8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761BDB1C20D8EAE10074E9D8 /* CoreDataManager.swift */; };
+		761BDB2620D8F8200074E9D8 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761BDB2420D8F8200074E9D8 /* ItemViewController.swift */; };
+		761BDB2720D8F8200074E9D8 /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761BDB2520D8F8200074E9D8 /* ItemViewController.xib */; };
 		7661D0B520D7FA4F003EB44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0B420D7FA4F003EB44F /* AppDelegate.swift */; };
 		7661D0B720D7FA4F003EB44F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0B620D7FA4F003EB44F /* ViewController.swift */; };
 		7661D0BA20D7FA4F003EB44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7661D0B820D7FA4F003EB44F /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		761BDB1C20D8EAE10074E9D8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		761BDB2420D8F8200074E9D8 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		761BDB2520D8F8200074E9D8 /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
 		7661D0B120D7FA4F003EB44F /* GalleryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalleryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7661D0B420D7FA4F003EB44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7661D0B620D7FA4F003EB44F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		761BDB2320D8F8030074E9D8 /* ItemViewController */ = {
+			isa = PBXGroup;
+			children = (
+				761BDB2420D8F8200074E9D8 /* ItemViewController.swift */,
+				761BDB2520D8F8200074E9D8 /* ItemViewController.xib */,
+			);
+			path = ItemViewController;
+			sourceTree = "<group>";
+		};
 		7661D0A820D7FA4F003EB44F = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +125,7 @@
 		7661D0CA20D7FBA2003EB44F /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				761BDB2320D8F8030074E9D8 /* ItemViewController */,
 				7661D0CD20D7FD7E003EB44F /* GalleryViewController */,
 				7661D0CC20D7FD67003EB44F /* ListViewController */,
 				7661D0CB20D7FBAA003EB44F /* MainTabBarViewController */,
@@ -260,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7661D0C220D7FA4F003EB44F /* LaunchScreen.storyboard in Resources */,
+				761BDB2720D8F8200074E9D8 /* ItemViewController.xib in Resources */,
 				7661D0D120D7FD97003EB44F /* GalleryViewController.xib in Resources */,
 				7661D0D520D7FDA5003EB44F /* ListViewController.xib in Resources */,
 				7661D0BF20D7FA4F003EB44F /* Assets.xcassets in Resources */,
@@ -288,6 +303,7 @@
 				7661D0D420D7FDA5003EB44F /* ListViewController.swift in Sources */,
 				7661D0B520D7FA4F003EB44F /* AppDelegate.swift in Sources */,
 				7661D0E520D80645003EB44F /* GalleryCollectionViewCell.swift in Sources */,
+				761BDB2620D8F8200074E9D8 /* ItemViewController.swift in Sources */,
 				761BDB1D20D8EAE10074E9D8 /* CoreDataManager.swift in Sources */,
 				7661D0E820D8D749003EB44F /* Manager.swift in Sources */,
 			);

@@ -9,7 +9,6 @@
 import UIKit
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +34,14 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func configureNavigationItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddVC))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showItemVC))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(makeEditing))
     }
     
-    @objc private func showAddVC() {
+    @objc private func showItemVC() {
+        let navigationVC = UINavigationController(rootViewController: ItemViewController())
         
+        self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc private func makeEditing() {
