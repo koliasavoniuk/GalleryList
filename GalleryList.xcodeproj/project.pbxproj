@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		761BDB1D20D8EAE10074E9D8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761BDB1C20D8EAE10074E9D8 /* CoreDataManager.swift */; };
 		7661D0B520D7FA4F003EB44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0B420D7FA4F003EB44F /* AppDelegate.swift */; };
 		7661D0B720D7FA4F003EB44F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7661D0B620D7FA4F003EB44F /* ViewController.swift */; };
 		7661D0BA20D7FA4F003EB44F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7661D0B820D7FA4F003EB44F /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		761BDB1C20D8EAE10074E9D8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		7661D0B120D7FA4F003EB44F /* GalleryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GalleryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7661D0B420D7FA4F003EB44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7661D0B620D7FA4F003EB44F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		7661D0DC20D7FFAF003EB44F /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7661D0EF20D8DEC1003EB44F /* CoreData */,
 				7661D0DD20D7FFB6003EB44F /* Extensions */,
 			);
 			path = Libs;
@@ -187,6 +190,14 @@
 				7661D0ED20D8D7BD003EB44F /* ParentModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7661D0EF20D8DEC1003EB44F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				761BDB1C20D8EAE10074E9D8 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +288,7 @@
 				7661D0D420D7FDA5003EB44F /* ListViewController.swift in Sources */,
 				7661D0B520D7FA4F003EB44F /* AppDelegate.swift in Sources */,
 				7661D0E520D80645003EB44F /* GalleryCollectionViewCell.swift in Sources */,
+				761BDB1D20D8EAE10074E9D8 /* CoreDataManager.swift in Sources */,
 				7661D0E820D8D749003EB44F /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
