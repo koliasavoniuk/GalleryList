@@ -17,6 +17,7 @@ class ItemViewController: UIViewController {
 
         self.configureView()
         self.configureNavigationItem()
+        self.configureSegmentedControl()
     }
     
     // MARK: - Private
@@ -25,10 +26,14 @@ class ItemViewController: UIViewController {
         self.navigationItem.title = VCTitles.item.rawValue
     }
     
+    private func configureSegmentedControl() {
+        self.rootView.typeSegmentedControl.addTarget(self, action: #selector(self.segmentedControlValueChanged), for: .valueChanged)
+    }
+    
     private func configureNavigationItem() {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveItem))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: BarButtonItems.back.rawValue, style: .plain, target: self, action: #selector(back))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveItem))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: BarButtonItems.back.rawValue, style: .plain, target: self, action: #selector(self.back))
     }
     
     @objc private func saveItem() {
@@ -37,5 +42,9 @@ class ItemViewController: UIViewController {
     
     @objc private func back() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func segmentedControlValueChanged() {
+        self.rootView.configureViewElements(with: self.rootView.typeSegmentedControl.selectedSegmentIndex)
     }
 }

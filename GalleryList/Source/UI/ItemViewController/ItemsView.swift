@@ -27,10 +27,48 @@ class ItemsView: UIView {
     @IBOutlet var bookkeeperTypeLabel: UILabel?
     @IBOutlet var bookkeeperTypeTextField: UITextField?
     
+    @IBOutlet var typeSegmentedControl: UISegmentedControl!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.configureView()
+    }
+    
+    // MARK: - Public
+    
+    func configureViewElements(with index: Int) {
+        let UIElements = [self.workplaceNumberTextField, self.workplaceNumberLabel,
+                          self.lunchTimeTextField, self.lunchTimeLabel,
+                          self.bookkeeperTypeLabel, self.bookkeeperTypeTextField,
+                          self.businessHoursTextField, self.businessHoursLabel]
+
+        for element in UIElements {
+            element?.isHidden = false
+        }
+        
+        switch index {
+        case 0:
+            self.workplaceNumberLabel?.isHidden = true
+            self.workplaceNumberTextField?.isHidden = true
+            
+            self.lunchTimeLabel?.isHidden = true
+            self.lunchTimeTextField?.isHidden = true
+            
+            self.bookkeeperTypeLabel?.isHidden = true
+            self.bookkeeperTypeTextField?.isHidden = true
+        case 1:
+            self.businessHoursLabel?.isHidden = true
+            self.businessHoursTextField?.isHidden = true
+            
+            self.bookkeeperTypeTextField?.isHidden = true
+            self.bookkeeperTypeLabel?.isHidden = true
+        case 2:
+            self.businessHoursTextField?.isHidden = true
+            self.businessHoursLabel?.isHidden = true
+        default:
+            print("default")
+        }
     }
     
     // MARK: - Private
