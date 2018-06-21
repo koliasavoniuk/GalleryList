@@ -10,6 +10,14 @@ import UIKit
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    // MARK: - Properties
+    
+    var managers: [Manager]?
+    var workers: [Worker]?
+    var bookkeepers: [Bookkeeper]?
+    
+    // MARK: - ViewController lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

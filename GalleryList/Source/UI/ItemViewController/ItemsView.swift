@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftRangeSlider
 
 class ItemsView: UIView {
     @IBOutlet var nameLabel: UILabel?
@@ -16,16 +17,16 @@ class ItemsView: UIView {
     @IBOutlet var salaryTextField: UITextField?
     
     @IBOutlet var businessHoursLabel: UILabel?
-    @IBOutlet var businessHoursTextField: UITextField?
+    @IBOutlet weak var businessHoursSlider: RangeSlider?
     
     @IBOutlet var workplaceNumberLabel: UILabel?
     @IBOutlet var workplaceNumberTextField: UITextField?
     
     @IBOutlet var lunchTimeLabel: UILabel?
-    @IBOutlet var lunchTimeTextField: UITextField?
+    @IBOutlet var lunchTimeSlider: UISlider?
     
     @IBOutlet var bookkeeperTypeLabel: UILabel?
-    @IBOutlet var bookkeeperTypeTextField: UITextField?
+    @IBOutlet var bookkeeperTypeSegmentedControl: UISegmentedControl?
     
     @IBOutlet var typeSegmentedControl: UISegmentedControl!
     
@@ -39,9 +40,9 @@ class ItemsView: UIView {
     
     func configureViewElements(with index: Int) {
         let UIElements = [self.workplaceNumberTextField, self.workplaceNumberLabel,
-                          self.lunchTimeTextField, self.lunchTimeLabel,
-                          self.bookkeeperTypeLabel, self.bookkeeperTypeTextField,
-                          self.businessHoursTextField, self.businessHoursLabel]
+                          self.lunchTimeSlider, self.lunchTimeLabel,
+                          self.bookkeeperTypeLabel, self.bookkeeperTypeSegmentedControl,
+                          self.businessHoursSlider, self.businessHoursLabel]
 
         for element in UIElements {
             element?.isHidden = false
@@ -53,18 +54,18 @@ class ItemsView: UIView {
             self.workplaceNumberTextField?.isHidden = true
             
             self.lunchTimeLabel?.isHidden = true
-            self.lunchTimeTextField?.isHidden = true
+            self.lunchTimeSlider?.isHidden = true
             
             self.bookkeeperTypeLabel?.isHidden = true
-            self.bookkeeperTypeTextField?.isHidden = true
+            self.bookkeeperTypeSegmentedControl?.isHidden = true
         case 1:
             self.businessHoursLabel?.isHidden = true
-            self.businessHoursTextField?.isHidden = true
+            self.businessHoursSlider?.isHidden = true
             
-            self.bookkeeperTypeTextField?.isHidden = true
+            self.bookkeeperTypeSegmentedControl?.isHidden = true
             self.bookkeeperTypeLabel?.isHidden = true
         case 2:
-            self.businessHoursTextField?.isHidden = true
+            self.businessHoursSlider?.isHidden = true
             self.businessHoursLabel?.isHidden = true
         default:
             print("default")

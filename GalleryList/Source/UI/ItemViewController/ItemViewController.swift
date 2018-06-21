@@ -10,7 +10,11 @@ import UIKit
 
 class ItemViewController: UIViewController {
 
+    // MARK: - Properties
+    
     @IBOutlet var rootView: ItemsView!
+    
+    // MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,37 @@ class ItemViewController: UIViewController {
     }
     
     @objc private func saveItem() {
-        
+//        let object: ParentModel?
+//        
+//        switch self.rootView.typeSegmentedControl.selectedSegmentIndex {
+//        case 0:
+//            object = Manager(salary: Int((self.rootView.salaryTextField?.accessibilityValue)!)!,
+//                                 name: (self.rootView.nameTextField?.accessibilityValue)!,
+//                                 businessHours: (self.rootView.businessHoursTextField?.accessibilityValue?.toDouble())!)
+//        case 1:
+//            object = Worker(salary: Int((self.rootView.salaryTextField?.accessibilityValue)!)!,
+//                            name: (self.rootView.nameTextField?.accessibilityValue)!,
+//                            workplaceNumber: Int((self.rootView.workplaceNumberTextField?.accessibilityValue)!)!,
+//                            lunchTime: (self.rootView.lunchTimeTextField?.accessibilityValue?.toDouble())!)
+//        case 2:
+//            let bookkeeperType: BookkeeperType?
+//            
+//            if self.rootView.bookkeeperTypeSegmentedControl?.selectedSegmentIndex == 0 {
+//                bookkeeperType = .payroll
+//            } else {
+//                bookkeeperType = .materialAccounting
+//            }
+//            
+//            object = Bookkeeper(type: bookkeeperType!,
+//                                salary: Int((self.rootView.salaryTextField?.accessibilityValue)!)!,
+//                                name: (self.rootView.nameTextField?.accessibilityValue)!,
+//                                workplaceNumber: Int((self.rootView.workplaceNumberTextField?.accessibilityValue)!)!,
+//                                lunchTime: (self.rootView.lunchTimeTextField?.accessibilityValue?.toDouble())!)
+//        default:
+//            print("FF")
+//        }
+//        
+//        
     }
     
     @objc private func back() {
