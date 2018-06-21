@@ -17,23 +17,26 @@ class ItemsView: UIView {
     @IBOutlet var salaryTextField: UITextField?
     
     @IBOutlet var businessHoursLabel: UILabel?
-    @IBOutlet weak var businessHoursSlider: RangeSlider?
+    @IBOutlet var businessHoursSlider: RangeSlider?
     
     @IBOutlet var workplaceNumberLabel: UILabel?
     @IBOutlet var workplaceNumberTextField: UITextField?
     
     @IBOutlet var lunchTimeLabel: UILabel?
-    @IBOutlet var lunchTimeSlider: UISlider?
+    @IBOutlet var lunchTimeSlider: RangeSlider?
     
     @IBOutlet var bookkeeperTypeLabel: UILabel?
     @IBOutlet var bookkeeperTypeSegmentedControl: UISegmentedControl?
     
     @IBOutlet var typeSegmentedControl: UISegmentedControl!
+    @IBOutlet var startValueTextField: UITextField!
+    @IBOutlet var finishValueTextField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.configureView()
+        //self.lunchTimeSlider?.addTarget(self, action: #selector(self.lunchTimeSliderValueHasChanged), for: .valueChanged)
     }
     
     // MARK: - Public
@@ -81,5 +84,22 @@ class ItemsView: UIView {
         self.workplaceNumberLabel?.text = ItemVCLabels.workplaceNumber.rawValue
         self.lunchTimeLabel?.text = ItemVCLabels.lunchTime.rawValue
         self.bookkeeperTypeLabel?.text = ItemVCLabels.bookkeeperType.rawValue
+        
+        //FIXME: Hardcoded values, SwiftRangeSlider brakes IB sizes
+        self.lunchTimeSlider?.frame.size.height = 30.0
+        self.businessHoursSlider?.frame.size.height = 30.0
+    }
+    
+    @objc private func lunchTimeSliderValueHasChanged() {
+        self.finishValueTextField.text = self.getTimeStringFromSeconds(seconds: (self.lunchTimeSlider?.upperValue)!)
+        self.startValueTextField.text = self.getTimeStringFromSeconds(seconds: (self.lunchTimeSlider?.lowerValue)!)
+    }
+    
+    func getTimeStringFromSeconds(seconds: Double) -> String {
+        let dcFormatter = DateComponentsFormatter()
+        dcFormatter.zeroFormattingBehavior = DateComponentsFormatter.ZeroFormattingBehavior.pad
+        dcFormatter.allowedUnits = [NSCalendar.Unit.hour, NSCalendar.Unit.minute]
+        dcFormatter.unitsStyle = DateComponentsFormatter.UnitsStyle.positional
+        return dcFormatter.string(from: seconds)!
     }
 }

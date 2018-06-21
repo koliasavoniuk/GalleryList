@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import SwiftRangeSlider
 
 class ItemViewController: UIViewController {
 
     // MARK: - Properties
     
     @IBOutlet var rootView: ItemsView!
+
+    
+    let lunchTimeStart: Date? = nil
+    let lunchTimeFinish: Date? = nil
+    let businessHoursStart: Date? = nil
+    let businessHoursFinish: Date? = nil
     
     // MARK: - ViewController lifecycle
     
@@ -21,7 +28,17 @@ class ItemViewController: UIViewController {
 
         self.configureView()
         self.configureNavigationItem()
-        self.configureSegmentedControl()
+        self.configureWorkerTypeSegmentedControl()
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func onLunchTimeRangeSlider(_ sender: RangeSlider) {
+        print("AA")
+    }
+    
+    @IBAction func onBusinessHoursRangeSlider(_ sender: RangeSlider) {
+        print("BB")
     }
     
     // MARK: - Private
@@ -30,8 +47,8 @@ class ItemViewController: UIViewController {
         self.navigationItem.title = VCTitles.item.rawValue
     }
     
-    private func configureSegmentedControl() {
-        self.rootView.typeSegmentedControl.addTarget(self, action: #selector(self.segmentedControlValueChanged), for: .valueChanged)
+    private func configureWorkerTypeSegmentedControl() {
+        self.rootView.typeSegmentedControl.addTarget(self, action: #selector(self.workerTypeSegmentedControlValueChanged), for: .valueChanged)
     }
     
     private func configureNavigationItem() {
@@ -70,15 +87,13 @@ class ItemViewController: UIViewController {
 //        default:
 //            print("FF")
 //        }
-//        
-//        
     }
     
     @objc private func back() {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @objc private func segmentedControlValueChanged() {
+    @objc private func workerTypeSegmentedControlValueChanged() {
         self.rootView.configureViewElements(with: self.rootView.typeSegmentedControl.selectedSegmentIndex)
     }
 }
