@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Worker: ParentModel {
+class Worker: ParentWorker {
     let workplaceNumber: Int
     let lunchTimeStart: Double
     let lunchTimeFinish: Double

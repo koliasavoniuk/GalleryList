@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Manager: ParentModel {
+class Manager: ParentWorker {
     let businessHoursStart: Double
     let businessHoursFinish: Double
     

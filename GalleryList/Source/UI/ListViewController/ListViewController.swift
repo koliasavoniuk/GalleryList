@@ -12,9 +12,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     // MARK: - Properties
     
-    var managers: [Manager]?
-    var workers: [Worker]?
-    var bookkeepers: [Bookkeeper]?
+    var managers = [Manager]()
+    var workers = [Worker]()
+    var bookkeepers = [Bookkeeper]()
     
     // MARK: - ViewController lifecycle
     
@@ -47,8 +47,22 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc private func showItemVC() {
-        let navigationVC = UINavigationController(rootViewController: ItemViewController())
+        let controller = ItemViewController(option: .new)
         
+        controller.workerHandler = { worker in
+            if type(of: worker) == Worker.self {
+                self.workers.append(worker as! Worker)
+            } else if type(of: worker) == Manager.self {
+                self.managers.append(worker as! Manager)
+            } else if type(of: worker) == Bookkeeper.self {
+                self.bookkeepers.append(worker as! Bookkeeper)
+            }
+            
+            controller.dismiss(animated: true, completion: nil)
+        }
+        
+        let navigationVC = UINavigationController(rootViewController: controller)
+            
         self.present(navigationVC, animated: true, completion: nil)
     }
     
