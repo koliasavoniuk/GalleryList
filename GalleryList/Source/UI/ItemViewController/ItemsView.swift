@@ -36,7 +36,6 @@ class ItemsView: UIView {
         super.awakeFromNib()
         
         self.configureView()
-        //self.lunchTimeSlider?.addTarget(self, action: #selector(self.lunchTimeSliderValueHasChanged), for: .valueChanged)
     }
     
     // MARK: - Public
@@ -75,6 +74,11 @@ class ItemsView: UIView {
         }
     }
     
+    func updateTime(lowerSeconds: Double, upperSeconds: Double) {
+        self.startValueTextField.text = self.getTimeStringFromSeconds(seconds: lowerSeconds)
+        self.finishValueTextField.text = self.getTimeStringFromSeconds(seconds: upperSeconds)
+    }
+    
     // MARK: - Private
     
     private func configureView() {
@@ -95,7 +99,7 @@ class ItemsView: UIView {
         self.startValueTextField.text = self.getTimeStringFromSeconds(seconds: (self.lunchTimeSlider?.lowerValue)!)
     }
     
-    func getTimeStringFromSeconds(seconds: Double) -> String {
+    private func getTimeStringFromSeconds(seconds: Double) -> String {
         let dcFormatter = DateComponentsFormatter()
         dcFormatter.zeroFormattingBehavior = DateComponentsFormatter.ZeroFormattingBehavior.pad
         dcFormatter.allowedUnits = [NSCalendar.Unit.hour, NSCalendar.Unit.minute]

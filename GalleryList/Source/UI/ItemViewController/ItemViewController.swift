@@ -14,12 +14,6 @@ class ItemViewController: UIViewController {
     // MARK: - Properties
     
     @IBOutlet var rootView: ItemsView!
-
-    
-    let lunchTimeStart: Date? = nil
-    let lunchTimeFinish: Date? = nil
-    let businessHoursStart: Date? = nil
-    let businessHoursFinish: Date? = nil
     
     // MARK: - ViewController lifecycle
     
@@ -34,11 +28,11 @@ class ItemViewController: UIViewController {
     // MARK: - IBActions
     
     @IBAction func onLunchTimeRangeSlider(_ sender: RangeSlider) {
-        print("AA")
+        self.rootView.updateTime(lowerSeconds: sender.lowerValue, upperSeconds: sender.upperValue)
     }
     
     @IBAction func onBusinessHoursRangeSlider(_ sender: RangeSlider) {
-        print("BB")
+        self.rootView.updateTime(lowerSeconds: sender.lowerValue, upperSeconds: sender.upperValue)
     }
     
     // MARK: - Private
@@ -48,7 +42,9 @@ class ItemViewController: UIViewController {
     }
     
     private func configureWorkerTypeSegmentedControl() {
-        self.rootView.typeSegmentedControl.addTarget(self, action: #selector(self.workerTypeSegmentedControlValueChanged), for: .valueChanged)
+        self.rootView.typeSegmentedControl.addTarget(self,
+                                                     action: #selector(self.workerTypeSegmentedControlValueChanged),
+                                                     for: .valueChanged)
     }
     
     private func configureNavigationItem() {
@@ -58,35 +54,17 @@ class ItemViewController: UIViewController {
     }
     
     @objc private func saveItem() {
-//        let object: ParentModel?
-//        
-//        switch self.rootView.typeSegmentedControl.selectedSegmentIndex {
-//        case 0:
-//            object = Manager(salary: Int((self.rootView.salaryTextField?.accessibilityValue)!)!,
-//                                 name: (self.rootView.nameTextField?.accessibilityValue)!,
-//                                 businessHours: (self.rootView.businessHoursTextField?.accessibilityValue?.toDouble())!)
-//        case 1:
-//            object = Worker(salary: Int((self.rootView.salaryTextField?.accessibilityValue)!)!,
-//                            name: (self.rootView.nameTextField?.accessibilityValue)!,
-//                            workplaceNumber: Int((self.rootView.workplaceNumberTextField?.accessibilityValue)!)!,
-//                            lunchTime: (self.rootView.lunchTimeTextField?.accessibilityValue?.toDouble())!)
-//        case 2:
-//            let bookkeeperType: BookkeeperType?
-//            
-//            if self.rootView.bookkeeperTypeSegmentedControl?.selectedSegmentIndex == 0 {
-//                bookkeeperType = .payroll
-//            } else {
-//                bookkeeperType = .materialAccounting
-//            }
-//            
-//            object = Bookkeeper(type: bookkeeperType!,
-//                                salary: Int((self.rootView.salaryTextField?.accessibilityValue)!)!,
-//                                name: (self.rootView.nameTextField?.accessibilityValue)!,
-//                                workplaceNumber: Int((self.rootView.workplaceNumberTextField?.accessibilityValue)!)!,
-//                                lunchTime: (self.rootView.lunchTimeTextField?.accessibilityValue?.toDouble())!)
-//        default:
-//            print("FF")
-//        }
+        switch self.rootView.typeSegmentedControl.selectedSegmentIndex {
+        case 0:
+            self.saveManager()
+        case 1:
+            self.saveWorker()
+        case 2:
+            self.saveBookkeeper()
+        default:
+            print("FF")
+        }
+
     }
     
     @objc private func back() {
@@ -95,5 +73,45 @@ class ItemViewController: UIViewController {
     
     @objc private func workerTypeSegmentedControlValueChanged() {
         self.rootView.configureViewElements(with: self.rootView.typeSegmentedControl.selectedSegmentIndex)
+    }
+    
+    private func getSecondsFromTimeString(timeString: String) -> Double {
+        let seconds = timeString.split(separator: ":")
+        let result = Double(seconds[0])! * 3600 + Double(seconds[1])! * 60
+        return result
+    }
+    
+    // MARK: - Saving
+    
+    private func saveWorker() {
+        let object = Worker(salary: Int((self.rootView.salaryTextField?.text)!)!,
+                        name: (self.rootView.nameTextField?.text)!,
+                        workplaceNumber: Int((self.rootView.workplaceNumberTextField?.text)!)!,
+                        lunchTimeStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text!),
+                        lunchTimeFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text!))
+    }
+    
+    private func saveManager() {
+        let object = Manager(salary: Int((self.rootView.salaryTextField?.text)!)!,
+                         name: (self.rootView.nameTextField?.text)!,
+                         businessHoursStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text!),
+                         businessHoursFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text!))
+    }
+    
+    private func saveBookkeeper() {
+        let bookkeeperType: BookkeeperType?
+        
+        if self.rootView.bookkeeperTypeSegmentedControl?.selectedSegmentIndex == 0 {
+            bookkeeperType = .payroll
+        } else {
+            bookkeeperType = .materialAccounting
+        }
+        
+        let object = Bookkeeper(type: bookkeeperType!,
+                            salary: Int((self.rootView.salaryTextField?.text)!)!,
+                            name: (self.rootView.nameTextField?.text)!,
+                            workplaceNumber: Int((self.rootView.workplaceNumberTextField?.text)!)!,
+                            lunchTimeStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text!),
+                            lunchTimeFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text!))
     }
 }

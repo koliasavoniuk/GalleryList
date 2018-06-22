@@ -10,11 +10,13 @@ import Foundation
 
 class Worker: ParentModel {
     let workplaceNumber: Int
-    let lunchTime: Double
+    let lunchTimeStart: Double
+    let lunchTimeFinish: Double
     
-    init(salary: Int, name: String, workplaceNumber: Int, lunchTime: Double) {
+    init(salary: Int, name: String, workplaceNumber: Int, lunchTimeStart: Double, lunchTimeFinish: Double) {
         self.workplaceNumber = workplaceNumber
-        self.lunchTime = lunchTime
+        self.lunchTimeStart = lunchTimeStart
+        self.lunchTimeFinish = lunchTimeFinish
         
         super.init(salary: salary, name: name)
     }

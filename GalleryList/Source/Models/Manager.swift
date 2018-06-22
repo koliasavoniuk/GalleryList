@@ -9,10 +9,12 @@
 import Foundation
 
 class Manager: ParentModel {
-    let businessHours: Double
+    let businessHoursStart: Double
+    let businessHoursFinish: Double
     
-    init(salary: Int, name: String, businessHours: Double) {
-        self.businessHours = businessHours
+    init(salary: Int, name: String, businessHoursStart: Double, businessHoursFinish: Double) {
+        self.businessHoursStart = businessHoursStart
+        self.businessHoursFinish = businessHoursFinish
         
         super.init(salary: salary, name: name)
     }

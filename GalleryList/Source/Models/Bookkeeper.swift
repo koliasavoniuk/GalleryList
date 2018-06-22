@@ -16,9 +16,9 @@ enum BookkeeperType {
 class Bookkeeper: Worker {
     let type: BookkeeperType
     
-    init(type: BookkeeperType, salary: Int, name: String, workplaceNumber: Int, lunchTime: Double) {
+    init(type: BookkeeperType, salary: Int, name: String, workplaceNumber: Int, lunchTimeStart: Double, lunchTimeFinish: Double) {
         self.type = type
         
-        super.init(salary: salary, name: name, workplaceNumber: workplaceNumber, lunchTime: lunchTime)
+        super.init(salary: salary, name: name, workplaceNumber: workplaceNumber, lunchTimeStart: lunchTimeStart, lunchTimeFinish: lunchTimeFinish)
     }
 }
