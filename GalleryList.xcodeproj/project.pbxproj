@@ -35,6 +35,7 @@
 		766B6B9720DE6473007CB676 /* FoundationKitFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766B6B9620DE6473007CB676 /* FoundationKitFunctions.swift */; };
 		766B6B9A20DE7398007CB676 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766B6B9820DE7398007CB676 /* ListTableViewCell.swift */; };
 		766B6B9B20DE7398007CB676 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 766B6B9920DE7398007CB676 /* ListTableViewCell.xib */; };
+		766B6B9E20DE7806007CB676 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766B6B9D20DE7806007CB676 /* UITableView+Extensions.swift */; };
 		76D31ADF20D92E19001A0187 /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D31ADE20D92E19001A0187 /* ItemsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		766B6B9620DE6473007CB676 /* FoundationKitFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationKitFunctions.swift; sourceTree = "<group>"; };
 		766B6B9820DE7398007CB676 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		766B6B9920DE7398007CB676 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		766B6B9D20DE7806007CB676 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		76D31ADE20D92E19001A0187 /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
 		8269D2C9C908407A2DDE849D /* Pods_GalleryList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GalleryList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8393441E3A4FAA5DAFFAE47D /* Pods-GalleryList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GalleryList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GalleryList/Pods-GalleryList.debug.xcconfig"; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				7661D0DE20D7FFD3003EB44F /* UITabBarController+Extensions.swift */,
 				7623CCEE20DB9ED300112D1B /* String+Extensions.swift */,
 				766B6B9620DE6473007CB676 /* FoundationKitFunctions.swift */,
+				766B6B9D20DE7806007CB676 /* UITableView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				7661D0EA20D8D753003EB44F /* Worker.swift in Sources */,
 				7661D0B720D7FA4F003EB44F /* ViewController.swift in Sources */,
 				7661D0D020D7FD97003EB44F /* GalleryViewController.swift in Sources */,
+				766B6B9E20DE7806007CB676 /* UITableView+Extensions.swift in Sources */,
 				766B6B9720DE6473007CB676 /* FoundationKitFunctions.swift in Sources */,
 				7661D0BD20D7FA4F003EB44F /* GalleryList.xcdatamodeld in Sources */,
 				7661D0EC20D8D7A7003EB44F /* Bookkeeper.swift in Sources */,

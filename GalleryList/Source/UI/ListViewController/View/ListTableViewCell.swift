@@ -10,6 +10,10 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
 
+    @IBOutlet var photoView: UIImageView!
+    @IBOutlet var infoLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

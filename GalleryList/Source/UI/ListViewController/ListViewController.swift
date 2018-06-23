@@ -13,6 +13,7 @@ struct Workers {
     var managers = [Manager]()
     var workers = [Worker]()
     var bookkeepers = [Bookkeeper]()
+    let count = 3
     
     subscript (index: Int) -> [ParentWorker] {
         var parentWorkers = [ParentWorker]()
@@ -39,13 +40,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet var rootView: ListView!
     
-    var managers = [Manager]()
-    var workers = [Worker]()
-    var bookkeepers = [Bookkeeper]()
-    
-    let workerss = Workers()
-    
-    let headerTitles = ["Managers", "Workers", "Bookkeepers"]
+    var workerss = Workers()
     
     // MARK: - ViewController lifecycle
     
@@ -54,42 +49,35 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.configureView()
         self.configureNavigationItem()
-        //String(describing: type(of: self.workerss.workers))
+        self.configureTableVC()
     }
     
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.workerss[section].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return self.workerss.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        
-        switch indexPath.section {
-        case 1:
-            cell.textLabel?.text = self.managers[indexPath.section].name
-        case 2:
-            cell.textLabel?.text = self.workers[indexPath.section].name
-        case 3:
-            cell.textLabel?.text = self.bookkeepers[indexPath.section].name
-        default:
-            print("default")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: toString(ListTableViewCell.self), for: indexPath)
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.headerTitles[section]
+        return String(describing: type(of: self.workerss[section]))
     }
     
     // MARK: - Private
 
+    private func configureTableVC() {
+        self.rootView.tableView.register(cells: ListTableViewCell.self)
+    }
+    
     private func configureView() {
         self.navigationItem.title = VCTitles.list.rawValue
     }
@@ -104,11 +92,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         controller.workerHandler = { [weak self] worker in
             if type(of: worker) == Worker.self {
-                self?.workers.append(worker as! Worker)
+                self?.workerss.workers.append(worker as! Worker)
             } else if type(of: worker) == Manager.self {
-                self?.managers.append(worker as! Manager)
+                self?.workerss.managers.append(worker as! Manager)
             } else if type(of: worker) == Bookkeeper.self {
-                self?.bookkeepers.append(worker as! Bookkeeper)
+                self?.workerss.bookkeepers.append(worker as! Bookkeeper)
             }
             
             self?.rootView.tableView.reloadData()
