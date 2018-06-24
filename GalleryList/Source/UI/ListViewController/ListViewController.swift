@@ -135,8 +135,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = ItemViewController()
+        controller.model = self.staff[indexPath.section][indexPath.row]
         
         controller.completionHandler = { [weak self] someWorker in
+            self?.staff[indexPath.section].remove(at: indexPath.row)
             self?.saveSomeWorker(someWorker: someWorker)
             self?.rootView.tableView.reloadData()
             

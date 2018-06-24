@@ -17,6 +17,7 @@ class ItemViewController: UIViewController, TimeStringProcessor {
     // MARK: - Properties
     
     @IBOutlet var rootView: ItemsView!
+    var model: ParentWorker?
     
     // MARK: - ViewController lifecycle
     
@@ -26,6 +27,10 @@ class ItemViewController: UIViewController, TimeStringProcessor {
         self.configureView()
         self.configureNavigationItem()
         self.configureWorkerTypeSegmentedControl()
+        
+        self.model.map {  [weak self] in
+            self?.fill(with: $0)
+        }
     }
     
     // MARK: - IBActions
@@ -75,6 +80,18 @@ class ItemViewController: UIViewController, TimeStringProcessor {
     
     @objc private func workerTypeSegmentedControlValueChanged() {
         self.rootView.configureViewElements(with: self.rootView.typeSegmentedControl.selectedSegmentIndex)
+    }
+    
+    private func fill(with model: ParentWorker) {
+        if type(of: model) == Worker.self {
+            self.rootView.configureWorkerView(worker: model as! Worker)
+            
+        } else if type(of: model) == Manager.self {
+            self.rootView.configureManagerView(manager: model as! Manager)
+            
+        } else if type(of: model) == Bookkeeper.self {
+            self.rootView.configureBookkeeperView(bookkeeper: model as! Bookkeeper)
+        }
     }
     
     // MARK: - Object creating
