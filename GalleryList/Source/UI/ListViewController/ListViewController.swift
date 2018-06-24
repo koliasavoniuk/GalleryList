@@ -90,6 +90,7 @@ class ListViewController: UIViewController {
         
         controller.completionHandler = { [weak self] someWorker in
             self?.saveSomeWorker(someWorker: someWorker)
+            self?.alphabeticallySort()
             self?.rootView.tableView.reloadData()
             
             controller.dismiss(animated: true, completion: nil)
@@ -110,6 +111,20 @@ class ListViewController: UIViewController {
             self.staff.managers.append(someWorker as! Manager)
         } else if type(of: someWorker) == Bookkeeper.self {
             self.staff.bookkeepers.append(someWorker as! Bookkeeper)
+        }
+    }
+    
+    func alphabeticallySort() {
+        self.staff.managers.sort {
+            $0.name < $1.name
+        }
+        
+        self.staff.workers.sort {
+            $0.name < $1.name
+        }
+
+        self.staff.bookkeepers.sort {
+            $0.name < $1.name
         }
     }
 }
@@ -140,6 +155,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         controller.completionHandler = { [weak self] someWorker in
             self?.staff[indexPath.section].remove(at: indexPath.row)
             self?.saveSomeWorker(someWorker: someWorker)
+            self?.alphabeticallySort()
             self?.rootView.tableView.reloadData()
             
             controller.dismiss(animated: true, completion: nil)
