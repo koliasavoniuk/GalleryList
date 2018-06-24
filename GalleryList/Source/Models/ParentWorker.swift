@@ -1,5 +1,5 @@
 //
-//  ParentModel.swift
+//  ParentWorker.swift
 //  GalleryList
 //
 //  Created by Mykola Savoniuk on 6/19/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ParentModel: NSObject {
+class ParentWorker: NSObject {
     let salary: Int
     let name: String
     
