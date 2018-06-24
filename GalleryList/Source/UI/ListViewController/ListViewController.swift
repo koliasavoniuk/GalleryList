@@ -73,6 +73,7 @@ class ListViewController: UIViewController {
         }
     }
     
+    //FIXME: - Remove duplication
     func alphabeticallySort() {
         self.staff.managers.sort {
             $0.name < $1.name
