@@ -51,7 +51,7 @@ struct Staff {
     }
 }
 
-class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ListViewController: UIViewController {
 
     // MARK: - Properties
     
@@ -70,6 +70,51 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.configureTableVC()
     }
     
+    // MARK: - Private
+
+    private func configureTableVC() {
+        self.rootView.tableView.register(cells: ListTableViewCell.self)
+    }
+    
+    private func configureView() {
+        self.navigationItem.title = VCTitles.list.rawValue
+    }
+    
+    private func configureNavigationItem() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showItemVC))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(makeEditing))
+    }
+    
+    @objc private func showItemVC() {
+        let controller = ItemViewController()
+        
+        controller.completionHandler = { [weak self] someWorker in
+            self?.saveSomeWorker(someWorker: someWorker)
+            self?.rootView.tableView.reloadData()
+            
+            controller.dismiss(animated: true, completion: nil)
+        }
+        
+        let navigationVC = UINavigationController(rootViewController: controller)
+        self.present(navigationVC, animated: true, completion: nil)
+    }
+    
+    @objc private func makeEditing() {
+        self.rootView.tableView.isEditing = !self.rootView.tableView.isEditing
+    }
+    
+    private func saveSomeWorker(someWorker: ParentWorker) {
+        if type(of: someWorker) == Worker.self {
+            self.staff.workers.append(someWorker as! Worker)
+        } else if type(of: someWorker) == Manager.self {
+            self.staff.managers.append(someWorker as! Manager)
+        } else if type(of: someWorker) == Bookkeeper.self {
+            self.staff.bookkeepers.append(someWorker as! Bookkeeper)
+        }
+    }
+}
+
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,16 +127,30 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ListTableViewCell = cast(tableView.dequeueReusableCell(withIdentifier: toString(ListTableViewCell.self), for: indexPath))!
-        let photo = UIImage(named: "gallery_icon")
+        let photo = UIImage(named: "list_icon")
         cell.fill(with: self.staff[indexPath.section][indexPath.row], photo: photo!)
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = ItemViewController()
+        
+        controller.completionHandler = { [weak self] someWorker in
+            self?.saveSomeWorker(someWorker: someWorker)
+            self?.rootView.tableView.reloadData()
+            
+            controller.dismiss(animated: true, completion: nil)
+        }
+        
+        let navigationVC = UINavigationController(rootViewController: controller)
+        self.present(navigationVC, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.headerTitles[section]
     }
-
+    
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -133,48 +192,4 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
-    // MARK: - Private
-
-    private func configureTableVC() {
-        self.rootView.tableView.register(cells: ListTableViewCell.self)
-    }
-    
-    private func configureView() {
-        self.navigationItem.title = VCTitles.list.rawValue
-    }
-    
-    private func configureNavigationItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showItemVC))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(makeEditing))
-    }
-    
-    @objc private func showItemVC() {
-        let controller = ItemViewController(option: .new)
-        
-        controller.completionHandler = { [weak self] someWorker in
-            self?.saveSomeWorker(someWorker: someWorker)
-            self?.rootView.tableView.reloadData()
-            
-            controller.dismiss(animated: true, completion: nil)
-        }
-        
-        let navigationVC = UINavigationController(rootViewController: controller)
-        self.present(navigationVC, animated: true, completion: nil)
-    }
-    
-    @objc private func makeEditing() {
-        self.rootView.tableView.isEditing = !self.rootView.tableView.isEditing
-    }
-    
-    private func saveSomeWorker(someWorker: ParentWorker) {
-        if type(of: someWorker) == Worker.self {
-            self.staff.workers.append(someWorker as! Worker)
-        } else if type(of: someWorker) == Manager.self {
-            self.staff.managers.append(someWorker as! Manager)
-        } else if type(of: someWorker) == Bookkeeper.self {
-            self.staff.bookkeepers.append(someWorker as! Bookkeeper)
-        }
-    }
-    
 }

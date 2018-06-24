@@ -9,7 +9,7 @@
 import UIKit
 import SwiftRangeSlider
 
-class ItemsView: UIView, TimeStringFromSeconds {
+class ItemsView: UIView, TimeStringProcessor {
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var nameTextField: UITextField?
     

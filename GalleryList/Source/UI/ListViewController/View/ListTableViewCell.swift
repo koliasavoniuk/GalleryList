@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell, TimeStringFromSeconds {
+class ListTableViewCell: UITableViewCell, TimeStringProcessor {
 
     @IBOutlet var photoView: UIImageView!
     @IBOutlet var infoLabel: UILabel!
