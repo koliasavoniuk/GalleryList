@@ -23,7 +23,15 @@ extension TimeStringProcessor {
     }
     
     func getSecondsFromTimeString(timeString: String) -> Double {
-        let seconds = timeString.split(separator: ":")
+        var time: String
+        
+        if timeString == "" {
+            time = "0:00"
+        } else {
+            time = timeString
+        }
+        
+        let seconds = time.split(separator: ":")
         let result = Double(seconds[0])! * 3600 + Double(seconds[1])! * 60
         return result
     }

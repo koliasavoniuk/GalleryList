@@ -12,11 +12,13 @@ import SwiftRangeSlider
 class ItemViewController: UIViewController, TimeStringProcessor {
     typealias completionHandler<T: ParentWorker> = (T) -> ()
 
+    var isNewItem: Bool = false
     var completionHandler: completionHandler<ParentWorker>?
     
     // MARK: - Properties
     
     @IBOutlet var rootView: ItemsView!
+    var model: ParentWorker?
     
     // MARK: - ViewController lifecycle
     
@@ -26,6 +28,14 @@ class ItemViewController: UIViewController, TimeStringProcessor {
         self.configureView()
         self.configureNavigationItem()
         self.configureWorkerTypeSegmentedControl()
+        
+        self.model.map {  [weak self] in
+            self?.fill(with: $0)
+        }
+        
+        if isNewItem {
+            self.rootView.configureViewElements(with: 0)
+        }
     }
     
     // MARK: - IBActions
@@ -77,14 +87,26 @@ class ItemViewController: UIViewController, TimeStringProcessor {
         self.rootView.configureViewElements(with: self.rootView.typeSegmentedControl.selectedSegmentIndex)
     }
     
+    private func fill(with model: ParentWorker) {
+        if type(of: model) == Worker.self {
+            self.rootView.configureWorkerView(worker: model as! Worker)
+            
+        } else if type(of: model) == Manager.self {
+            self.rootView.configureManagerView(manager: model as! Manager)
+            
+        } else if type(of: model) == Bookkeeper.self {
+            self.rootView.configureBookkeeperView(bookkeeper: model as! Bookkeeper)
+        }
+    }
+    
     // MARK: - Object creating
     
     private func saveWorker() {
         let object = Worker(salary: Int((self.rootView.salaryTextField?.text) ?? "") ?? 0,
                         name: (self.rootView.nameTextField?.text) ?? "",
                         workplaceNumber: Int((self.rootView.workplaceNumberTextField?.text) ?? "") ?? 0,
-                        lunchTimeStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? ""),
-                        lunchTimeFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? ""))
+                        lunchTimeStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? "0:00"),
+                        lunchTimeFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? "0:00"))
         
         self.completionHandler!(object)
     }
@@ -92,8 +114,8 @@ class ItemViewController: UIViewController, TimeStringProcessor {
     private func saveManager() {
         let object = Manager(salary: Int((self.rootView.salaryTextField?.text) ?? "") ?? 0,
                          name: (self.rootView.nameTextField?.text) ?? "",
-                         businessHoursStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? ""),
-                         businessHoursFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? ""))
+                         businessHoursStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? "0:00"),
+                         businessHoursFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? "0:00"))
         
         self.completionHandler!(object)
     }
@@ -111,8 +133,8 @@ class ItemViewController: UIViewController, TimeStringProcessor {
                             salary: Int((self.rootView.salaryTextField?.text) ?? "") ?? 0,
                             name: (self.rootView.nameTextField?.text) ?? "",
                             workplaceNumber: Int((self.rootView.workplaceNumberTextField?.text) ?? "") ?? 0,
-                            lunchTimeStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? ""),
-                            lunchTimeFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? ""))
+                            lunchTimeStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? "0:00"),
+                            lunchTimeFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? "0:00"))
 
         self.completionHandler!(object)
     }

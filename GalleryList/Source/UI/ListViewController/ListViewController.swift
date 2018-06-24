@@ -9,48 +9,6 @@
 import UIKit
 import Foundation
 
-struct Staff {
-    var managers = [Manager]()
-    var workers = [Worker]()
-    var bookkeepers = [Bookkeeper]()
-    let count = 3
-    
-    //I tried to imlpement generic subscript, but Xcode always fails with no warnings and errors
-    //It may be Hackintosh bug((
-    subscript(index: Int) -> [ParentWorker] {
-        get {
-            var parentWorkers = [ParentWorker]()
-            
-            switch index {
-            case 0:
-                parentWorkers = self.managers
-            case 1:
-                parentWorkers = self.workers
-            case 2:
-                parentWorkers = self.bookkeepers
-            default:
-                print("default")
-            }
-            
-            return parentWorkers
-        }
-
-        
-        set(someWorkers) {
-            switch index {
-            case 0:
-                self.managers = someWorkers as! [Manager]
-            case 1:
-                self.workers = someWorkers as! [Worker]
-            case 2:
-                self.bookkeepers = someWorkers as! [Bookkeeper]
-            default:
-                print("default")
-            }
-        }
-    }
-}
-
 class ListViewController: UIViewController {
 
     // MARK: - Properties
@@ -87,9 +45,11 @@ class ListViewController: UIViewController {
     
     @objc private func showItemVC() {
         let controller = ItemViewController()
+        controller.isNewItem = true
         
         controller.completionHandler = { [weak self] someWorker in
             self?.saveSomeWorker(someWorker: someWorker)
+            self?.alphabeticallySort()
             self?.rootView.tableView.reloadData()
             
             controller.dismiss(animated: true, completion: nil)
@@ -110,6 +70,21 @@ class ListViewController: UIViewController {
             self.staff.managers.append(someWorker as! Manager)
         } else if type(of: someWorker) == Bookkeeper.self {
             self.staff.bookkeepers.append(someWorker as! Bookkeeper)
+        }
+    }
+    
+    //FIXME: - Remove duplication
+    func alphabeticallySort() {
+        self.staff.managers.sort {
+            $0.name < $1.name
+        }
+        
+        self.staff.workers.sort {
+            $0.name < $1.name
+        }
+
+        self.staff.bookkeepers.sort {
+            $0.name < $1.name
         }
     }
 }
@@ -135,9 +110,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = ItemViewController()
+        controller.model = self.staff[indexPath.section][indexPath.row]
         
         controller.completionHandler = { [weak self] someWorker in
+            self?.staff[indexPath.section].remove(at: indexPath.row)
             self?.saveSomeWorker(someWorker: someWorker)
+            self?.alphabeticallySort()
             self?.rootView.tableView.reloadData()
             
             controller.dismiss(animated: true, completion: nil)
