@@ -18,21 +18,36 @@ struct Staff {
     //I tried to imlpement generic subscript, but Xcode always fails with no warnings and errors
     //It may be Hackintosh bug((
     subscript(index: Int) -> [ParentWorker] {
-        var parentWorkers = [ParentWorker]()
-        
-        switch index {
-        case 0:
-            parentWorkers = self.managers
-        case 1:
-            parentWorkers = self.workers
-        case 2:
-            parentWorkers = self.bookkeepers
-        default:
-            print("default")
+        get {
+            var parentWorkers = [ParentWorker]()
             
+            switch index {
+            case 0:
+                parentWorkers = self.managers
+            case 1:
+                parentWorkers = self.workers
+            case 2:
+                parentWorkers = self.bookkeepers
+            default:
+                print("default")
+            }
+            
+            return parentWorkers
         }
+
         
-        return parentWorkers
+        set(someWorkers) {
+            switch index {
+            case 0:
+                self.managers = someWorkers as! [Manager]
+            case 1:
+                self.workers = someWorkers as! [Worker]
+            case 2:
+                self.bookkeepers = someWorkers as! [Bookkeeper]
+            default:
+                print("default")
+            }
+        }
     }
 }
 
@@ -76,8 +91,40 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.headerTitles[section]
     }
+
     
-    // MARK: - UITableViewDataSource
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.staff[indexPath.section].remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = self.staff[sourceIndexPath.section][sourceIndexPath.row]
+        self.staff[sourceIndexPath.section].remove(at: sourceIndexPath.row)
+        self.staff[destinationIndexPath.section].insert(movedObject, at: destinationIndexPath.row)
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        if sourceIndexPath.section != proposedDestinationIndexPath.section {
+            var row = 0
+            if sourceIndexPath.section < proposedDestinationIndexPath.section {
+                row = tableView.numberOfRows(inSection: sourceIndexPath.section) - 1
+            }
+            
+            return IndexPath(row: row, section: sourceIndexPath.section)
+        }
+        
+        return proposedDestinationIndexPath;
+    }
+    
+    // MARK: - UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
@@ -113,7 +160,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc private func makeEditing() {
-        
+        self.rootView.tableView.isEditing = !self.rootView.tableView.isEditing
     }
     
     private func saveSomeWorker(someWorker: ParentWorker) {
