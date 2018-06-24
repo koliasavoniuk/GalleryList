@@ -87,6 +87,7 @@ class ListViewController: UIViewController {
     
     @objc private func showItemVC() {
         let controller = ItemViewController()
+        controller.isNewItem = true
         
         controller.completionHandler = { [weak self] someWorker in
             self?.saveSomeWorker(someWorker: someWorker)

@@ -12,6 +12,7 @@ import SwiftRangeSlider
 class ItemViewController: UIViewController, TimeStringProcessor {
     typealias completionHandler<T: ParentWorker> = (T) -> ()
 
+    var isNewItem: Bool = false
     var completionHandler: completionHandler<ParentWorker>?
     
     // MARK: - Properties
@@ -30,6 +31,10 @@ class ItemViewController: UIViewController, TimeStringProcessor {
         
         self.model.map {  [weak self] in
             self?.fill(with: $0)
+        }
+        
+        if isNewItem {
+            self.rootView.configureViewElements(with: 0)
         }
     }
     
