@@ -35,7 +35,6 @@ struct Staff {
             return parentWorkers
         }
 
-        
         set(someWorkers) {
             switch index {
             case 0:
