@@ -9,7 +9,7 @@
 import UIKit
 import SwiftRangeSlider
 
-class ItemsView: UIView {
+class ItemsView: UIView, TimeStringFromSeconds {
     @IBOutlet var nameLabel: UILabel?
     @IBOutlet var nameTextField: UITextField?
     
@@ -75,8 +75,8 @@ class ItemsView: UIView {
     }
     
     func updateTime(lowerSeconds: Double, upperSeconds: Double) {
-        self.startValueTextField.text = self.getTimeStringFromSeconds(seconds: lowerSeconds)
-        self.finishValueTextField.text = self.getTimeStringFromSeconds(seconds: upperSeconds)
+        self.startValueTextField.text = self.timeStringFromSeconds(seconds: lowerSeconds)
+        self.finishValueTextField.text = self.timeStringFromSeconds(seconds: upperSeconds)
     }
     
     // MARK: - Private
@@ -95,16 +95,7 @@ class ItemsView: UIView {
     }
     
     @objc private func lunchTimeSliderValueHasChanged() {
-        self.finishValueTextField.text = self.getTimeStringFromSeconds(seconds: (self.lunchTimeSlider?.upperValue)!)
-        self.startValueTextField.text = self.getTimeStringFromSeconds(seconds: (self.lunchTimeSlider?.lowerValue)!)
+        self.finishValueTextField.text = self.timeStringFromSeconds(seconds: (self.lunchTimeSlider?.upperValue)!)
+        self.startValueTextField.text = self.timeStringFromSeconds(seconds: (self.lunchTimeSlider?.lowerValue)!)
     }
-    
-    private func getTimeStringFromSeconds(seconds: Double) -> String {
-        let dcFormatter = DateComponentsFormatter()
-        dcFormatter.zeroFormattingBehavior = DateComponentsFormatter.ZeroFormattingBehavior.pad
-        dcFormatter.allowedUnits = [NSCalendar.Unit.hour, NSCalendar.Unit.minute]
-        dcFormatter.unitsStyle = DateComponentsFormatter.UnitsStyle.positional
-        return dcFormatter.string(from: seconds)!
-    }
-
 }

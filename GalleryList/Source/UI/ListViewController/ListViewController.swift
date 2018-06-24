@@ -66,13 +66,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: toString(ListTableViewCell.self), for: indexPath)
+        let cell:ListTableViewCell = cast(tableView.dequeueReusableCell(withIdentifier: toString(ListTableViewCell.self), for: indexPath))!
+        let photo = UIImage(named: "gallery_icon")
+        cell.fill(with: self.staff[indexPath.section][indexPath.row], photo: photo!)
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.headerTitles[section]
+    }
+    
+    // MARK: - UITableViewDataSource
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     // MARK: - Private
