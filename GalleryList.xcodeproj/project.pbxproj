@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F5714EFF08756A3D74101FD /* Pods_GalleryList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8269D2C9C908407A2DDE849D /* Pods_GalleryList.framework */; };
+		76116E8D20E00EF2009DD2EE /* StaffModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76116E8C20E00EF2009DD2EE /* StaffModel.swift */; };
 		761BDB1D20D8EAE10074E9D8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761BDB1C20D8EAE10074E9D8 /* CoreDataManager.swift */; };
 		761BDB2620D8F8200074E9D8 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761BDB2420D8F8200074E9D8 /* ItemViewController.swift */; };
 		761BDB2720D8F8200074E9D8 /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 761BDB2520D8F8200074E9D8 /* ItemViewController.xib */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		76116E8C20E00EF2009DD2EE /* StaffModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaffModel.swift; sourceTree = "<group>"; };
 		761BDB1C20D8EAE10074E9D8 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		761BDB2420D8F8200074E9D8 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		761BDB2520D8F8200074E9D8 /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				7661D0E920D8D753003EB44F /* Worker.swift */,
 				7661D0EB20D8D7A7003EB44F /* Bookkeeper.swift */,
 				7661D0ED20D8D7BD003EB44F /* ParentWorker.swift */,
+				76116E8C20E00EF2009DD2EE /* StaffModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76116E8D20E00EF2009DD2EE /* StaffModel.swift in Sources */,
 				7661D0DB20D7FE21003EB44F /* ListView.swift in Sources */,
 				76D31ADF20D92E19001A0187 /* ItemsView.swift in Sources */,
 				7661D0EE20D8D7BD003EB44F /* ParentWorker.swift in Sources */,
