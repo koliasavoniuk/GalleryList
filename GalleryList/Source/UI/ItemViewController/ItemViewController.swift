@@ -15,8 +15,10 @@ enum ItemOption {
 }
 
 class ItemViewController: UIViewController {
+    typealias completionHandler<T: ParentWorker> = (T) -> ()
+    
     var option: ItemOption
-    var workerHandler: ((ParentWorker) -> ())?
+    var completionHandler: completionHandler<ParentWorker>?
     
     // MARK: - Properties
     
@@ -108,7 +110,7 @@ class ItemViewController: UIViewController {
                         lunchTimeStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? ""),
                         lunchTimeFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? ""))
         
-        self.workerHandler!(object)
+        self.completionHandler!(object)
     }
     
     private func saveManager() {
@@ -117,7 +119,7 @@ class ItemViewController: UIViewController {
                          businessHoursStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? ""),
                          businessHoursFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? ""))
         
-        self.workerHandler!(object)
+        self.completionHandler!(object)
     }
     
     private func saveBookkeeper() {
@@ -135,7 +137,7 @@ class ItemViewController: UIViewController {
                             workplaceNumber: Int((self.rootView.workplaceNumberTextField?.text) ?? "") ?? 0,
                             lunchTimeStart: self.getSecondsFromTimeString(timeString: self.rootView.startValueTextField.text ?? ""),
                             lunchTimeFinish: self.getSecondsFromTimeString(timeString: self.rootView.finishValueTextField.text ?? ""))
-        
-        self.workerHandler!(object)
+
+        self.completionHandler!(object)
     }
 }

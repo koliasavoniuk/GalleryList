@@ -9,13 +9,15 @@
 import UIKit
 import Foundation
 
-struct Workers {
+struct Staff {
     var managers = [Manager]()
     var workers = [Worker]()
     var bookkeepers = [Bookkeeper]()
     let count = 3
     
-    subscript (index: Int) -> [ParentWorker] {
+    //I tried to imlpement generic subscript, but Xcode always fails with no warnings and errors
+    //It may be Hackintosh bug((
+    subscript(index: Int) -> [ParentWorker] {
         var parentWorkers = [ParentWorker]()
         
         switch index {
@@ -40,7 +42,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet var rootView: ListView!
     
-    var workerss = Workers()
+    var staff = Staff()
+    let headerTitles = ["Managers", "Workers", "Bookkeepers"]
     
     // MARK: - ViewController lifecycle
     
@@ -55,21 +58,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.workerss[section].count
+        return self.staff[section].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return self.workerss.count
+        return self.staff.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: toString(ListTableViewCell.self), for: indexPath)
-
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return String(describing: type(of: self.workerss[section]))
+        return self.headerTitles[section]
     }
     
     // MARK: - Private
@@ -90,26 +93,29 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc private func showItemVC() {
         let controller = ItemViewController(option: .new)
         
-        controller.workerHandler = { [weak self] worker in
-            if type(of: worker) == Worker.self {
-                self?.workerss.workers.append(worker as! Worker)
-            } else if type(of: worker) == Manager.self {
-                self?.workerss.managers.append(worker as! Manager)
-            } else if type(of: worker) == Bookkeeper.self {
-                self?.workerss.bookkeepers.append(worker as! Bookkeeper)
-            }
-            
+        controller.completionHandler = { [weak self] someWorker in
+            self?.saveSomeWorker(someWorker: someWorker)
             self?.rootView.tableView.reloadData()
             
             controller.dismiss(animated: true, completion: nil)
         }
         
         let navigationVC = UINavigationController(rootViewController: controller)
-            
         self.present(navigationVC, animated: true, completion: nil)
     }
     
     @objc private func makeEditing() {
         
     }
+    
+    private func saveSomeWorker(someWorker: ParentWorker) {
+        if type(of: someWorker) == Worker.self {
+            self.staff.workers.append(someWorker as! Worker)
+        } else if type(of: someWorker) == Manager.self {
+            self.staff.managers.append(someWorker as! Manager)
+        } else if type(of: someWorker) == Bookkeeper.self {
+            self.staff.bookkeepers.append(someWorker as! Bookkeeper)
+        }
+    }
+    
 }
