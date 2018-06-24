@@ -9,32 +9,14 @@
 import UIKit
 import SwiftRangeSlider
 
-enum ItemOption {
-    case new
-    case edit
-}
-
-class ItemViewController: UIViewController {
+class ItemViewController: UIViewController, TimeStringProcessor {
     typealias completionHandler<T: ParentWorker> = (T) -> ()
-    
-    var option: ItemOption
+
     var completionHandler: completionHandler<ParentWorker>?
     
     // MARK: - Properties
     
     @IBOutlet var rootView: ItemsView!
-    
-    // MARK: - Initializations and Deallocations
-    
-    init(option: ItemOption) {
-        self.option = option
-        
-        super.init(nibName: "ItemViewController", bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // MARK: - ViewController lifecycle
     
@@ -93,12 +75,6 @@ class ItemViewController: UIViewController {
     
     @objc private func workerTypeSegmentedControlValueChanged() {
         self.rootView.configureViewElements(with: self.rootView.typeSegmentedControl.selectedSegmentIndex)
-    }
-    
-    private func getSecondsFromTimeString(timeString: String) -> Double {
-        let seconds = timeString.split(separator: ":")
-        let result = Double(seconds[0])! * 3600 + Double(seconds[1])! * 60
-        return result
     }
     
     // MARK: - Object creating

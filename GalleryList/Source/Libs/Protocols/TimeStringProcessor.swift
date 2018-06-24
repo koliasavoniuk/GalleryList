@@ -1,5 +1,5 @@
 //
-//  TimeStringFromSeconds.swift
+//  TimeStringProcessor.swift
 //  GalleryList
 //
 //  Created by Mykola Savoniuk on 6/24/18.
@@ -8,16 +8,23 @@
 
 import Foundation
 
-protocol TimeStringFromSeconds {
+protocol TimeStringProcessor {
     func timeStringFromSeconds(seconds: Double) -> String
+    func getSecondsFromTimeString(timeString: String) -> Double
 }
 
-extension TimeStringFromSeconds {
+extension TimeStringProcessor {
     func timeStringFromSeconds(seconds: Double) -> String {
         let dcFormatter = DateComponentsFormatter()
         dcFormatter.zeroFormattingBehavior = DateComponentsFormatter.ZeroFormattingBehavior.pad
         dcFormatter.allowedUnits = [NSCalendar.Unit.hour, NSCalendar.Unit.minute]
         dcFormatter.unitsStyle = DateComponentsFormatter.UnitsStyle.positional
         return dcFormatter.string(from: seconds)!
+    }
+    
+    func getSecondsFromTimeString(timeString: String) -> Double {
+        let seconds = timeString.split(separator: ":")
+        let result = Double(seconds[0])! * 3600 + Double(seconds[1])! * 60
+        return result
     }
 }
