@@ -19,7 +19,7 @@ extension TimeStringProcessor {
         dcFormatter.zeroFormattingBehavior = DateComponentsFormatter.ZeroFormattingBehavior.pad
         dcFormatter.allowedUnits = [NSCalendar.Unit.hour, NSCalendar.Unit.minute]
         dcFormatter.unitsStyle = DateComponentsFormatter.UnitsStyle.positional
-        return dcFormatter.string(from: seconds)!
+        return dcFormatter.string(from: seconds) ?? "0:00"
     }
     
     func getSecondsFromTimeString(timeString: String) -> Double {
@@ -32,7 +32,9 @@ extension TimeStringProcessor {
         }
         
         let seconds = time.split(separator: ":")
-        let result = Double(seconds[0])! * 3600 + Double(seconds[1])! * 60
+        let hours = Double(seconds[0]) ?? 0.0
+        let minutes = Double(seconds[1]) ?? 0.0
+        let result = hours * 3600 + minutes * 60
         return result
     }
 }

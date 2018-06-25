@@ -101,9 +101,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:ListTableViewCell = cast(tableView.dequeueReusableCell(withIdentifier: toString(ListTableViewCell.self), for: indexPath))!
-        let photo = UIImage(named: "list_icon")
-        cell.fill(with: self.staff[indexPath.section][indexPath.row], photo: photo!)
+        let cell:ListTableViewCell = cast(tableView.dequeueReusableCell(withIdentifier: toString(ListTableViewCell.self), for: indexPath)) ?? ListTableViewCell()
+        let photo = UIImage(named: "list_icon") ?? UIImage()
+        cell.fill(with: self.staff[indexPath.section][indexPath.row], photo: photo)
         
         return cell
     }

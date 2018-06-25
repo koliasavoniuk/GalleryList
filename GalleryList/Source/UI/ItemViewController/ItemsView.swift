@@ -129,8 +129,8 @@ class ItemsView: UIView, TimeStringProcessor {
     }
     
     @objc private func lunchTimeSliderValueHasChanged() {
-        self.finishValueTextField.text = self.timeStringFromSeconds(seconds: (self.lunchTimeSlider?.upperValue)!)
-        self.startValueTextField.text = self.timeStringFromSeconds(seconds: (self.lunchTimeSlider?.lowerValue)!)
+        self.finishValueTextField.text = self.timeStringFromSeconds(seconds: (self.lunchTimeSlider?.upperValue) ?? 0.0)
+        self.startValueTextField.text = self.timeStringFromSeconds(seconds: (self.lunchTimeSlider?.lowerValue) ?? 0.0)
     }
     
     private func configureManagerElements() {
